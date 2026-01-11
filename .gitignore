@@ -1,0 +1,62 @@
+# OMNeT++ build output
+out/
+
+# OMNeT++ generated files
+*.o
+*.d
+*.a
+*.so
+*.exe
+Makefile.vc
+
+# OMNeT++ IDE files
+.oppbuildspec
+.oppfeatures
+.oppfeaturestate
+
+# Eclipse CDT / OMNeT++ IDE project files
+.cproject
+.project
+.settings/
+.metadata/
+
+# Qt environment config
+.qtenvrc
+
+# Simulation results
+results/
+*.vec
+*.vci
+*.sca
+*.elog
+
+# Log files
+*.log
+
+# Core dumps
+core
+
+# Backup files
+*~
+*.bak
+*.orig
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Cursor IDE
+.cursor/
+
+# VSCode
+.vscode/
+
+# Build directories
+build/
+debug/
+release/
+
+# Executable without extension (Unix)
+src/core4inet-workspace

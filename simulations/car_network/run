@@ -1,0 +1,3 @@
+#!/bin/sh
+cd `dirname $0`
+opp_run -l ../../../CoRE4INET/src/CoRE4INET -n .:../../../CoRE4INET/src:../../src $*
