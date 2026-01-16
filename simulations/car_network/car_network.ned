@@ -60,7 +60,8 @@ network car_network
             @display("p=400,100");
         }
         
-        CU: CorruptedTTEAVBEtherHost {
+        //CU: CorruptedTTEAVBEtherHost
+        CU: TTEAVBEtherHost {
             @display("p=400,300");
         }
         
