@@ -1,84 +1,84 @@
 # CoRE4INET Workspace
 
-OMNeT++ tabanlı Time-Triggered Ethernet (TTE) ve AVB simülasyon projesi.
+OMNeT++ based Time-Triggered Ethernet (TTE) and AVB simulation project.
 
-## 📋 Gereksinimler
+## Requirements
 
-- Linux (Ubuntu 20.04+ önerilir) veya WSL2
+- Linux (Ubuntu 20.04+ recommended) or WSL2
 - GCC 9+
 - Python 3.x
-- Qt5 (GUI için)
+- Qt5 (for GUI)
 
-## 🚀 Kurulum
+## Installation
 
-### 1. OMNeT++ 5.7.1 Kurulumu
+### 1. OMNeT++ 5.7.1 Installation
 
 ```bash
-# OMNeT++ 5.7.1'i indir
+# Download OMNeT++ 5.7.1
 git clone --branch omnetpp-5.7.1 https://github.com/omnetpp/omnetpp.git omnetpp-5.7.1
 
-# Dizine gir
+# Enter directory
 cd omnetpp-5.7.1
 
-# Ortam değişkenlerini ayarla
+# Set environment variables
 source setenv
 
-# Yapılandır ve derle
+# Configure and build
 ./configure
 make -j$(nproc)
 ```
 
-### 2. INET Framework Kurulumu
+### 2. INET Framework Installation
 
 ```bash
-# INET 4.2.5'i indir (OMNeT++ 5.7.x ile uyumlu)
+# Download INET 4.2.5 (compatible with OMNeT++ 5.7.x)
 git clone --branch v4.2.5 https://github.com/inet-framework/inet.git
 
-# Dizine gir
+# Enter directory
 cd inet
 
-# Alt modülleri indir
+# Download submodules
 git submodule update --init --recursive
 
-# Derle
+# Build
 make makefiles
 make -j$(nproc)
 ```
 
-### 3. CoRE4INET Kurulumu (Opsiyonel)
+### 3. CoRE4INET Installation (Optional)
 
 ```bash
-# CoRE4INET'i indir
+# Download CoRE4INET
 git clone https://github.com/CoRE-RG/CoRE4INET.git
 
-# Dizine gir
+# Enter directory
 cd CoRE4INET
 
-# Derle
+# Build
 make makefiles
 make -j$(nproc)
 ```
 
-## 🔧 Projeyi Derleme
+## Building the Project
 
 ```bash
-# Proje dizinine gir
+# Enter project directory
 cd core4inet-workspace
 
-# Ortam değişkenlerini ayarla (OMNeT++ kurulum dizininde)
+# Set environment variables (in OMNeT++ installation directory)
 source /path/to/omnetpp-5.7.1/setenv
 
-# Derle
+# Build
 make
 ```
 
-## ▶️ Simülasyonları Çalıştırma
+## Running Simulations
 
 ### Car Network
 ```bash
 cd simulations/car_network
 ./run
-# veya
+# or
 opp_run -m -n .:../../src -l ../../src/core4inet-workspace omnetpp.ini
 ```
 
@@ -94,35 +94,57 @@ cd simulations/industrial_network
 ./run
 ```
 
-## 📁 Proje Yapısı
+## Project Structure
 
 ```
 core4inet-workspace/
-├── src/                          # Kaynak kodlar
+├── src/                          # Source code
 ├── simulations/
-│   ├── car_network/              # Araç ağı simülasyonu
-│   ├── large_car_network/        # Büyük araç ağı simülasyonu
-│   └── industrial_network/       # Endüstriyel ağ simülasyonu
-├── out/                          # Derleme çıktıları
+│   ├── car_network/              # In-vehicle network simulation
+│   ├── large_car_network/        # Large in-vehicle network simulation
+│   └── industrial_network/       # Industrial network simulation
+├── out/                          # Build outputs
 ├── Makefile
 └── README.md
 ```
 
-## 📚 Simülasyon Açıklamaları
+## Simulation Descriptions
 
-| Simülasyon | Açıklama |
-|------------|----------|
-| **car_network** | Temel araç içi ağ simülasyonu (Kamera, Telematics, HU, CD/DVD vb.) |
-| **large_car_network** | Gelişmiş araç ağı (Lidar, Radar, VCC, Audio, Video vb.) |
-| **industrial_network** | Endüstriyel Ethernet ağ simülasyonu |
+### car_network
 
-## 🔗 Faydalı Linkler
+Basic in-vehicle network simulation (Camera, Telematics, HU, CD/DVD, etc.)
 
-- [OMNeT++ Resmi Site](https://omnetpp.org/)
+**References:** The topology and flow details are described in the following publications:
+- [1] G. Patti, L. Lo Bello, "Performance assessment of the IEEE 802.1Q in automotive applications", AEIT Automotive, 2019.
+- [2] L. Leonardi, L. Lo Bello, G. Patti, "Performance assessment of the IEEE 802.1Qch in an automotive scenario", AEIT Automotive, 2020.
+- [3] L. Lo Bello, M. Ashjaei, G. Patti, M. Behnam, "Schedulability analysis of Time-Sensitive Networks with scheduled traffic and preemption support", IEEE Access, 2021.
+- [4] M. Topsakal, S. Cevher, D. Ergenç, "A Machine Learning-Based Intrusion Detection Framework with Labeled Dataset Generation for IEEE 802.1 Time-Sensitive Networking", Journal of Systems Architecture, Vol. 164, 2025.
+- [5] S. Cevher, M. Topsakal, Ö. K. Demir, "Delay Analysis of IEEE 802.1BA Audio Video Bridging Networks: Recent Advances and Evaluation of Realistic Industrial Communication Use Cases", IJERAD, Vol. 17, Issue 2, pp. 383-402, 2025.
+- [6] M. Topsakal, S. Cevher, "Cyber Security for IEEE 802.1 Time Sensitive In-Vehicle Networking: Recent Advances and Impact Analysis of DoS Attacks", Dokuz Eylül Üniversitesi Mühendislik Fakültesi Fen ve Mühendislik Dergisi, 2024.
+
+### large_car_network
+
+Advanced in-vehicle network simulation (Lidar, Radar, VCC, Audio, Video, etc.)
+
+**References:** The topology and flow details are described in the following publications:
+- [1] F. Luo, B. Wang, Z. Yang, P. Zhang, Y. Ma, Z. Fang, M. Wu, Z. Sun, "Design Methodology of Automotive Time-Sensitive Network System Based on OMNeT++ Simulation System", IEEE Access, 2019.
+- [2] M. Topsakal, S. Cevher, "Cyber Security for IEEE 802.1 Time Sensitive In-Vehicle Networking: Recent Advances and Impact Analysis of DoS Attacks", Dokuz Eylül Üniversitesi Mühendislik Fakültesi Fen ve Mühendislik Dergisi, 2024.
+
+### industrial_network
+
+Industrial Ethernet network simulation.
+
+**References:** The topology and flow details are described in the following publications:
+- [1] M. Ashjaei, G. Patti, M. Behnam, T. Nolte, G. Alderisi, L. Lo Bello, "Schedulability analysis of Ethernet Audio Video Bridging networks with scheduled traffic support", Real-Time Systems, 2017.
+- [2] S. Cevher, M. Topsakal, Ö. K. Demir, "Delay Analysis of IEEE 802.1BA Audio Video Bridging Networks: Recent Advances and Evaluation of Realistic Industrial Communication Use Cases", IJERAD, Vol. 17, Issue 2, pp. 383-402, 2025.
+
+## Useful Links
+
+- [OMNeT++ Official Site](https://omnetpp.org/)
 - [INET Framework](https://inet.omnetpp.org/)
 - [CoRE4INET GitHub](https://github.com/CoRE-RG/CoRE4INET)
-- [OMNeT++ Dokümantasyon](https://doc.omnetpp.org/)
+- [OMNeT++ Documentation](https://doc.omnetpp.org/)
 
-## 📝 Lisans
+## License
 
-Bu proje akademik ve araştırma amaçlı kullanım içindir.
+This project is intended for academic and research purposes.
